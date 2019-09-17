@@ -1,0 +1,28 @@
+title: Home
+views:
+  - badges: null
+    cards:
+      - entity: weather.home
+        type: weather-forecast
+      - entity: sensor.temperature
+        type: sensor
+      - entity: sensor.window
+        type: sensor
+      - entity: sensor.motion
+        type: sensor
+      - entity: light.light
+        hold_action:
+          action: more-info
+        show_icon: true
+        show_name: true
+        tap_action:
+          action: toggle
+        type: entity-button
+      - entities:
+          - entity: sensor.photores
+        show_header_toggle: false
+        theme: default
+        title: Light level
+        type: entities
+    path: default_view
+    title: Home

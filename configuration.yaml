@@ -1,0 +1,47 @@
+
+# Configure a default setup of Home Assistant (frontend, api, etc)
+default_config:
+
+# Uncomment this if you are using SSL/TLS, running in Docker container, etc.
+# http:
+#   base_url: example.duckdns.org:8123
+
+# Light
+light:
+  - platform: mqtt
+    name: "Light"
+    command_topic: "inLight"
+    state_topic: "inLight"
+    payload_on: "0"
+    payload_off: "1"
+    retain: true
+    
+# Sensors
+sensor:
+  - platform: mqtt
+    name: "Temperature"
+    state_topic: "outTemperature"
+    unit_of_measurement: '°C'
+  - platform: mqtt
+    name: "Window"
+    state_topic: "outWindow"
+    icon: mdi:window-closed
+  - platform: mqtt
+    name: "Motion"
+    state_topic: "outMotion"
+    icon: mdi:motion-sensor
+  - platform: mqtt
+    name: "Photores"
+    state_topic: "outPhotores"
+    icon: mdi:theme-light-dark
+
+# MQTT broker
+mqtt:
+
+# Text to speech
+tts:
+  - platform: google_translate
+
+group: !include groups.yaml
+automation: !include automations.yaml
+script: !include scripts.yaml
